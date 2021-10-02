@@ -12,11 +12,16 @@ import tallerBack.Repository.MateriasRepository;
 public class MateriasService {
 	
 	@Autowired
-	private MateriasRepository materiasRepository;
+	private MateriasRepository materiaRepository;
 	
-	public List<MateriasModel> listAllMaterias(){
-		return materiasRepository.findAll();
+	public List<MateriasModel> getAllMaterias(){
+		return materiaRepository.findAll();
 	}
+	
+	public MateriasModel getMateriaByCodigo(int codigo) {
+		return materiaRepository.findById(codigo).get();
+	}
+	
 	
 	
 

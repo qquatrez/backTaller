@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,13 +16,20 @@ import tallerBack.Service.MateriasService;
 public class MateriasController {
 	
 	@Autowired
-	MateriasService materiasService;
+	MateriasService materiaService;
 	
 	@GetMapping("/materias")
-	public List <MateriasModel> list(){
-		return materiasService.listAllMaterias();
+	public List <MateriasModel> getMaterias(){
+		return materiaService.getAllMaterias();
+	}
+	
+	@GetMapping("/materias/{codigo}")
+	public MateriasModel getMateriaByCodigo(@PathVariable("codigo")int codigo) {
+		return materiaService.getMateriaByCodigo(codigo);
 		
 	}
+	
+	
 	
 
 }
