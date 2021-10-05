@@ -3,6 +3,8 @@ package tallerBack.Controller;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +53,7 @@ public class MateriasController {
 	
 	@PostMapping("/materias")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void agregarMateria(@RequestBody MateriasModel materia) {
+	public void agregarMateria(@Valid @RequestBody MateriasModel materia) {
 		materiaService.saveMateria(materia);
 	}
 	

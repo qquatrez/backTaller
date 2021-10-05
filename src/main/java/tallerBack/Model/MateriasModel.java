@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Materias")
@@ -16,12 +19,16 @@ public class MateriasModel {
 	private int codigo;
 	
 	@Column(name="cantidad_horas")
+	@Min(1)
 	private int cantidad_horas;
 	
+	@NotNull(message = "Cuatrimestre es obligatorio")
+	@Min(1)
 	@Column(name="cuatrimestre")
 	private int cuatrimestre;
 	
 	@Column(name="nombre")
+	@NotEmpty(message = "Nombre es obligatorio")
 	private String nombre;
 
 	public int getCodigo() {
