@@ -26,7 +26,7 @@ public class MateriasService {
 	
 	//Delete
 	public void deleteMateria(int codigo) {
-		materiaRepository.deleteById(codigo);
+		materiaRepository.deleteById(codigo);			
 	}
 	
 	//Post
@@ -34,6 +34,4 @@ public class MateriasService {
 		materiaRepository.save(materia);
 	}
 	
-	
-
 }
