@@ -59,7 +59,7 @@ public class MateriasController {
 	
 	
 	@PutMapping("/materias/{codigo}")
-	public ResponseEntity<?> actualizarMateria(@RequestBody MateriasModel materia, @PathVariable("codigo")int codigo){
+	public ResponseEntity<?> actualizarMateria(@Valid @RequestBody MateriasModel materia, @PathVariable("codigo")int codigo){
 		try {
 			MateriasModel materiaExiste= materiaService.getMateriaByCodigo(codigo);
 			materia.setCodigo(codigo);
