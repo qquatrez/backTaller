@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import tallerBack.Model.MateriasModel;
 import tallerBack.Service.MateriasService;
 
-
 @Validated
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -51,12 +50,12 @@ public class MateriasController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 	
+	
 	@PostMapping("/materias")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void agregarMateria(@Valid @RequestBody MateriasModel materia) {
 		materiaService.saveMateria(materia);
 	}
-	
 	
 	@PutMapping("/materias/{codigo}")
 	public ResponseEntity<?> actualizarMateria(@Valid @RequestBody MateriasModel materia, @PathVariable("codigo")int codigo){
