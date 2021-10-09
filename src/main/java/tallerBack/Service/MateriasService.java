@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tallerBack.Exception.ApiErrorNotFound;
 import tallerBack.Model.MateriasModel;
 import tallerBack.Repository.MateriasRepository;
 
@@ -20,8 +21,8 @@ public class MateriasService {
 	}
 	
 	//GetByMateria
-	public MateriasModel getMateriaByCodigo(int codigo) {
-		return materiaRepository.findById(codigo).get();
+	public MateriasModel getMateriaByCodigo(int codigo) throws ApiErrorNotFound {
+		return materiaRepository.findById(codigo).orElseThrow(()->new ApiErrorNotFound("no encontrado"));
 	}
 	
 	//Delete

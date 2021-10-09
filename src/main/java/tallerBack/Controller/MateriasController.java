@@ -2,7 +2,6 @@ package tallerBack.Controller;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +37,17 @@ public class MateriasController {
 	}
 	
 	//falta validar y responder not found cuando no se encuentra codigo
+	/*
+	 * @GetMapping("/materias/{codigo}") public MateriasModel
+	 * getMateriaByCodigo(@PathVariable("codigo")int codigo) { return
+	 * materiaService.getMateriaByCodigo(codigo); }
+	 */
 	@GetMapping("/materias/{codigo}")
-	public MateriasModel getMateriaByCodigo(@PathVariable("codigo")int codigo) {
-		return materiaService.getMateriaByCodigo(codigo);
+	public ResponseEntity <MateriasModel> getMateriaByCodigo(@PathVariable("codigo")int codigo){
+		MateriasModel materia=materiaService.getMateriaByCodigo(codigo);
+		return new ResponseEntity<>(materia, HttpStatus.OK);
 	}
+	
 	
 	//delete /falta validar y responder not found cuando no se encuentra codigo
 	@DeleteMapping("/materias/{codigo}")
