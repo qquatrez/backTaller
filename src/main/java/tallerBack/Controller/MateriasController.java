@@ -36,26 +36,22 @@ public class MateriasController {
 		return materiaService.getAllMaterias();
 	}
 	
-	//falta validar y responder not found cuando no se encuentra codigo
-	/*
-	 * @GetMapping("/materias/{codigo}") public MateriasModel
-	 * getMateriaByCodigo(@PathVariable("codigo")int codigo) { return
-	 * materiaService.getMateriaByCodigo(codigo); }
-	 */
 	@GetMapping("/materias/{codigo}")
 	public ResponseEntity <MateriasModel> getMateriaByCodigo(@PathVariable("codigo")int codigo){
 		MateriasModel materia=materiaService.getMateriaByCodigo(codigo);
 		return new ResponseEntity<>(materia, HttpStatus.OK);
 	}
 	
-	
-	//delete /falta validar y responder not found cuando no se encuentra codigo
 	@DeleteMapping("/materias/{codigo}")
 	public ResponseEntity<?> deleteMateria(@PathVariable("codigo")int codigo){
-		materiaService.deleteMateria(codigo);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		try {
+			materiaService.deleteMateria(codigo);
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		catch (Exception e){
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
-	
 	
 	@PostMapping("/materias")
 	@ResponseStatus(code = HttpStatus.CREATED)
