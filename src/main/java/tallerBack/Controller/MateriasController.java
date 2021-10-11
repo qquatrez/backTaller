@@ -44,13 +44,9 @@ public class MateriasController {
 	
 	@DeleteMapping("/materias/{codigo}")
 	public ResponseEntity<?> deleteMateria(@PathVariable("codigo")int codigo){
-		try {
-			materiaService.deleteMateria(codigo);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		}
-		catch (Exception e){
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		materiaService.deleteMateria(codigo);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
 	}
 	
 	@PostMapping("/materias")

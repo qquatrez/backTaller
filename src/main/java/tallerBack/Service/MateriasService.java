@@ -1,6 +1,7 @@
 package tallerBack.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,12 +28,21 @@ public class MateriasService {
 	
 	//Delete
 	public void deleteMateria(int codigo) {
-		materiaRepository.deleteById(codigo);			
+		Optional <MateriasModel> materia = materiaRepository.findById(codigo);
+		if(!materia.isPresent()) {
+			throw new ApiErrorNotFound("no encontrado");
+		}
+		else {
+			materiaRepository.deleteById(codigo);
+		}
 	}
 	
 	//Post
 	public void saveMateria(MateriasModel materia) {
 		materiaRepository.save(materia);
 	}
+	
+	//put
+	
 	
 }
