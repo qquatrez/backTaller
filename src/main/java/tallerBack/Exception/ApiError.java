@@ -1,4 +1,4 @@
-package tallerBack.Model;
+package tallerBack.Exception;
 
 import java.util.List;
 import java.io.Serializable;
