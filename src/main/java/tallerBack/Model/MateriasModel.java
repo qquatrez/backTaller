@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -24,6 +25,7 @@ public class MateriasModel {
 	
 	@NotNull(message = "Cuatrimestre es obligatorio")
 	@Min(1)
+	@Max(10)
 	@Column(name="cuatrimestre")
 	private int cuatrimestre;
 	
