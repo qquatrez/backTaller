@@ -49,11 +49,19 @@ public class MateriasController {
 		
 	}
 	
-	@PostMapping("/materias")
+	/*@PostMapping("/materias")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public void agregarMateria(@Valid @RequestBody MateriasModel materia) {
 		materiaService.saveMateria(materia);
+	}*/
+	
+	@PostMapping("/materias")
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public MateriasModel agregarMateria(@Valid @RequestBody MateriasModel materia) {
+		materiaService.saveMateria(materia);
+		return materia;
 	}
+	
 	
 	@PutMapping("/materias/{codigo}")
 	public ResponseEntity<?> actualizarMateria(@Valid @RequestBody MateriasModel materia, @PathVariable("codigo")int codigo){
