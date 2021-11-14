@@ -48,13 +48,7 @@ public class MateriasController {
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		
 	}
-	
-	/*@PostMapping("/materias")
-	@ResponseStatus(code = HttpStatus.CREATED)
-	public void agregarMateria(@Valid @RequestBody MateriasModel materia) {
-		materiaService.saveMateria(materia);
-	}*/
-	
+		
 	@PostMapping("/materias")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public MateriasModel agregarMateria(@Valid @RequestBody MateriasModel materia) {

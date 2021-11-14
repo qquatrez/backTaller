@@ -25,7 +25,8 @@ public class ApiErrorHandler extends ResponseEntityExceptionHandler {
 		apiError.setError("Error en validaciones");
 		List<String> errors = new ArrayList<>();
 		BindingResult bindingResult = ex.getBindingResult();
-		bindingResult.getAllErrors().forEach(error -> errors.add(error.getCode()));
+		//bindingResult.getAllErrors().forEach(error -> errors.add(error.getCode()));
+		bindingResult.getAllErrors().forEach(error -> errors.add(error.getDefaultMessage()));
 		apiError.setErrors(errors);
 		return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
 	}

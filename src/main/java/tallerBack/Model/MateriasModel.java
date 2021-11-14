@@ -10,6 +10,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "Materias")
@@ -20,16 +21,17 @@ public class MateriasModel {
 	private int codigo;
 	
 	@Column(name="cantidad_horas")
-	@Min(1)
+	@Min(value=1, message="cantidad de horas debe ser mayor o igual a 1")
 	private int cantidad_horas;
 	
 	@NotNull(message = "Cuatrimestre es obligatorio")
-	@Min(1)
-	@Max(10)
+	@Min(value=1, message="cuatrimestre debe ser mayor o igual a 1")
+	@Max(value=10, message="cuatrimestre debe ser menor o igual a 10")
 	@Column(name="cuatrimestre")
 	private int cuatrimestre;
 	
 	@Column(name="nombre")
+	@Pattern(regexp="[a-zA-Z]{1,10}",message="Nombre debe iniciar con Letra. Minimo tres Caracteres. Maximo 10")  
 	@NotEmpty(message = "Nombre es obligatorio")
 	private String nombre;
 
