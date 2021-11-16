@@ -21,7 +21,8 @@ public class MateriasModel {
 	private int codigo;
 	
 	@Column(name="cantidad_horas")
-	@Min(value=1, message="cantidad de horas debe ser mayor o igual a 1")
+	@Min(value=1, message="cantidad de horas por dia debe ser mayor o igual a 1")
+	@Max(value=6, message="cantidad de horas debe ser menor o igual a 6")
 	private int cantidad_horas;
 	
 	@NotNull(message = "Cuatrimestre es obligatorio")
