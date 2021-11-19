@@ -32,7 +32,7 @@ public class MateriasModel {
 	private int cuatrimestre;
 	
 	@Column(name="nombre")
-	@Pattern(regexp="[a-zA-Z]{1,10}",message="Nombre debe iniciar con Letra. Minimo tres Caracteres. Maximo 10")  
+	//@Pattern(regexp="[0-9a-zA-Z]+${1,10}",message="Nombre debe iniciar con Letra. Minimo tres Caracteres. Maximo 10")
 	@NotEmpty(message = "Nombre es obligatorio")
 	private String nombre;
 
